@@ -118,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGE_CODE = 'uk-uk'
 
 TIME_ZONE = 'Europe/Kiev'
 
@@ -131,6 +131,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -146,12 +148,12 @@ CART_SESSION_ID = 'cart'
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Email settings
-EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+"""EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.getenv('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')"""
 
 
 # Braintree settings
@@ -169,11 +171,11 @@ Configuration.configure(
 )
 
 
-"""EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'yarko1903@gmail.com'
 EMAIL_HOST_PASSWORD = 'hkripaxzoqrotjfq'
 EMAIL_PORT = 587
-EMAIL_USE_TLS = True"""
+EMAIL_USE_TLS = True
 
 
