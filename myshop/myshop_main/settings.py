@@ -191,24 +191,11 @@ Configuration.configure(
 )
 
 
-# django-parler
-PARLER_LANGUAGES = {
-    None: (
-        {'code': 'en'},
-        {'code': 'es'},
-        {'code': 'uk'},
-        {'code': 'pl'},
-        {'code': 'it'},
-        {'code': 'de'},
-        {'code': 'fr'},
-    ),
-    'default': {
-        'fallback': 'en',
-        'hide_untranslated': False,
-    }
-}
+"""EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'yarko1903@gmail.com'
+EMAIL_HOST_PASSWORD = 'hkripaxzoqrotjfq'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True"""
 
-# redis config
-REDIS_HOST = 'localhost'
-REDIS_PORT = 6379
-REDIS_DB = 1
+
