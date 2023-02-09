@@ -168,13 +168,13 @@ CART_SESSION_ID = 'cart'
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Email settings
-"""EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
-"""
+
 
 # Braintree settings
 BRAINTREE_MERCHANT_ID = os.getenv('BRAINTREE_MERCHANT_ID')
