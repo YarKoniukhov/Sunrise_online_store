@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 from braintree import Configuration, Environment
+from django.utils.translation import gettext_lazy as _
 
 
 load_dotenv()
@@ -47,11 +48,16 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'payment.apps.PaymentConfig',
+    'coupons.apps.CouponsConfig',
+    'rosetta',
+    'parler',
+    'localflavor',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -118,7 +124,21 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
+LANGUAGES = (
+    ('en', _('English')),
+    ('uk', _('Ukrainian')),
+    ('pl', _('Polish')),
+    ('it', _('Italian')),
+    ('fr', _('French')),
+    ('de', _('German')),
+    ('es', _('Spanish')),
+)
+
 LANGUAGE_CODE = 'uk-uk'
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)
 
 TIME_ZONE = 'Europe/Kiev'
 
@@ -148,13 +168,13 @@ CART_SESSION_ID = 'cart'
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Email settings
-EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+"""EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
-
+"""
 
 # Braintree settings
 BRAINTREE_MERCHANT_ID = os.getenv('BRAINTREE_MERCHANT_ID')
@@ -171,11 +191,24 @@ Configuration.configure(
 )
 
 
-"""EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'yarko1903@gmail.com'
-EMAIL_HOST_PASSWORD = 'hkripaxzoqrotjfq'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True"""
+# django-parler
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en'},
+        {'code': 'es'},
+        {'code': 'uk'},
+        {'code': 'pl'},
+        {'code': 'it'},
+        {'code': 'de'},
+        {'code': 'fr'},
+    ),
+    'default': {
+        'fallback': 'en',
+        'hide_untranslated': False,
+    }
+}
 
-
+# redis config
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 1
