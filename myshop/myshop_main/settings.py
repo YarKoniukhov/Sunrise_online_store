@@ -199,3 +199,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True"""
 
 
+# redis config
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 1
